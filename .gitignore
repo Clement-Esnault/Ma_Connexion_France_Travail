@@ -1,0 +1,36 @@
+# Credentials — NE JAMAIS VERSIONNER
+.env
+*.env
+
+# Cache applicatif
+src/cache/*.json
+src/cache/*.tmp
+
+# PHPUnit
+src/.phpunit.cache/
+src/tests/php/junit.xml
+src/tests/php/tests/
+
+# Données sensibles (générées par la macro VBA)
+sql/insert_sites.sql
+sql/insert_interregions.sql
+sql/insert_regions.sql
+sql/insert_departements.sql
+sql/update_ip.sql
+sql/update_sites.sql
+sql/update_coordonnees.sql
+sql/export_audit.sql
+sql/sites_a_geocoder.csv
+
+# Dépendances
+src/vendor/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# IDE
+.vscode/
+.idea/

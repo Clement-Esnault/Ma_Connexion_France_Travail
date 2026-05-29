@@ -1,0 +1,342 @@
+/* ── Variables charte FT ─────────────────────────────────── */
+        :root {
+            --ft-blue:       #283276;
+            --ft-blue2: #406BDE;
+            --ft-rouge:      #E1000F;
+            --ft-vert:       #1a7a3c;
+            --ft-jaune:      #f0c040;
+            --ft-gris-bg:    #F5F5F5;
+            --ft-gris-bord:  #D9D9D9;
+            --ft-texte:      #333333;
+            --radius:        6px;
+            --shadow:        0 2px 8px rgba(0,0,0,.08);
+        }
+
+        body { background: var(--ft-gris-bg); }
+
+        /* ── En-tête de page ─────────────────────────────────────── */
+        .page-header {
+            background: var(--ft-blue);
+            color: #fff;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 4px solid var(--ft-rouge);
+        }
+        .page-header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+        .page-header .badge-count {
+            margin-left: auto;
+            background: var(--ft-rouge);
+            color: #fff;
+            font-size: .85rem;
+            font-weight: 700;
+            padding: .25rem .7rem;
+            border-radius: 999px;
+            display: none; /* affiché après chargement */
+        }
+
+        /* ── Zone filtres ────────────────────────────────────────── */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            align-items: center;
+            padding: 0 2rem 1.25rem;
+        }
+        .filters label { font-size: .85rem; font-weight: 600; color: var(--ft-blue); }
+        .filters select,
+        .filters input[type="text"] {
+            padding: .4rem .7rem;
+            border: 1.5px solid var(--ft-gris-bord);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: .85rem;
+            background: #fff;
+            color: var(--ft-texte);
+            cursor: pointer;
+            transition: border-color .15s;
+        }
+        .filters select:focus,
+        .filters input[type="text"]:focus {
+            outline: none;
+            border-color: var(--ft-blue2);
+        }
+
+        /* ── KPIs résumé ─────────────────────────────────────────── */
+        .kpi-bar {
+            display: flex;
+            gap: 1rem;
+            padding: 0 2rem 1.25rem;
+            flex-wrap: wrap;
+        }
+        .kpi {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: .9rem 1.4rem;
+            min-width: 140px;
+            text-align: center;
+            border-top: 3px solid var(--ft-rouge);
+        }
+        .kpi .kpi-val {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ft-rouge);
+            line-height: 1;
+        }
+        .kpi .kpi-lbl {
+            font-size: .75rem;
+            color: #666;
+            margin-top: .3rem;
+        }
+
+        /* ── Tableau ─────────────────────────────────────────────── */
+        .table-wrap {
+            padding: 0 2rem 3rem;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            font-size: .88rem;
+            min-width: 760px;
+        }
+        thead tr {
+            background: var(--ft-blue);
+            color: #fff;
+        }
+        thead th {
+            padding: .75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: .8rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+        }
+        thead th:hover { background: var(--ft-blue2); }
+        thead th .sort-icon { margin-left: .3rem; opacity: .5; }
+        thead th.sorted-asc .sort-icon::after  { content: ' ▲'; opacity: 1; }
+        thead th.sorted-desc .sort-icon::after { content: ' ▼'; opacity: 1; }
+
+        tbody tr {
+            border-bottom: 1px solid var(--ft-gris-bord);
+            transition: background .1s;
+        }
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: #f0f4ff; }
+
+        td { padding: .65rem 1rem; vertical-align: middle; }
+
+        /* Lien site */
+        .site-link {
+            font-weight: 600;
+            color: var(--ft-blue);
+            text-decoration: none;
+        }
+        .site-link:hover { text-decoration: underline; }
+
+        /* ── Badges métriques ────────────────────────────────────── */
+        .metric {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            font-weight: 600;
+            font-size: .88rem;
+            padding: .2rem .55rem;
+            border-radius: 999px;
+        }
+        .metric.confort     { background: #d4edda; color: #1a7a3c; }
+        .metric.fonctionnel { background: #fff3cd; color: #856404; }
+        .metric.insuffisant { background: #f8d7da; color: #842029; }
+        .metric.inconnu     { background: #e9ecef; color: #6c757d; }
+        .metric svg { flex-shrink: 0; }
+
+        /* ── Colonne "métriques insuffisantes" ───────────────────── */
+        .tags { display: flex; gap: .3rem; flex-wrap: wrap; }
+        .tag-insuffisant {
+            background: var(--ft-rouge);
+            color: #fff;
+            font-size: .72rem;
+            font-weight: 700;
+            padding: .15rem .45rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        /* ── État vide / chargement ──────────────────────────────── */
+        .state-msg {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+            font-size: .95rem;
+        }
+        .state-msg .icon { font-size: 2.5rem; margin-bottom: .5rem; }
+        .spinner {
+            display: inline-block;
+            width: 36px; height: 36px;
+            border: 4px solid var(--ft-gris-bord);
+            border-top-color: var(--ft-blue);
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+            margin-bottom: .75rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── Pagination ──────────────────────────────────────────── */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .4rem;
+            padding: 1rem 0 0;
+            flex-wrap: wrap;
+        }
+        .page-btn {
+            border: 1.5px solid var(--ft-gris-bord);
+            background: #fff;
+            color: var(--ft-blue);
+            border-radius: var(--radius);
+            padding: .3rem .65rem;
+            font-family: inherit;
+            font-size: .82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s;
+        }
+        .page-btn:hover,
+        .page-btn.active {
+            background: var(--ft-blue);
+            color: #fff;
+            border-color: var(--ft-blue);
+        }
+        .page-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+        /* ── Alerte seuils manquants ─────────────────────────────── */
+        .alert {
+            margin: 0 2rem 1rem;
+            padding: .75rem 1rem;
+            background: #fff3cd;
+            border-left: 4px solid #f0c040;
+            border-radius: var(--radius);
+            font-size: .85rem;
+            color: #664d03;
+        }
+/* ── Classes utilitaires (remplacent inline styles) ── */
+.alert-link        { color: inherit; font-weight: 700; }
+.filter-label--ml  { margin-left: 0.5rem; }
+.filter-input      { width: 200px; }
+
+@media (prefers-color-scheme: dark) {
+    body { background: #12131f !important; color: #e2e4f0 !important; }
+
+    .page-header {
+        background: #1a1c30 !important;
+        border-bottom-color: #E1000F;
+    }
+
+    .kpi { background: #1e2030 !important; border-top-color: #E1000F; }
+    .kpi .kpi-val { color: #e57373 !important; }
+    .kpi .kpi-lbl { color: #8892b8 !important; }
+
+    .filters select,
+    .filters input[type="text"] {
+        background: #1e2030 !important;
+        color: #e2e4f0 !important;
+        border-color: #2e3260 !important;
+    }
+
+    table { background: #1e2030 !important; }
+    thead tr { background: #1a1c30 !important; }
+    thead th { background: #1a1c30 !important; color: #8892b8 !important; }
+    thead th:hover { background: #242640 !important; }
+    tbody tr { border-bottom-color: #2e3260 !important; }
+    tbody tr:hover { background: #242640 !important; }
+    td { color: #e2e4f0 !important; background: transparent !important; }
+
+    .site-link { color: #7b9af7 !important; }
+    .tag-insuffisant { background: #c0392b !important; }
+
+    .state-msg { color: #8892b8 !important; }
+    .spinner { border-color: #2e3260 !important; border-top-color: #7b9af7 !important; }
+
+    .alert {
+        background: #2a2000 !important;
+        border-left-color: #E69F00 !important;
+        color: #e0b030 !important;
+    }
+    .alert-link { color: #e0b030 !important; }
+    .badge-count { background: #c0392b !important; }
+
+    .metrique.confort     { background: #0d2818 !important; color: #4caf82 !important; }
+    .metrique.fonctionnel { background: #2a2000 !important; color: #e0b030 !important; }
+    .metrique.insuffisant { background: #2a0808 !important; color: #e57373 !important; }
+}
+        /* ── Régression ──────────────────────────────────────────────── */
+        .badge-regression {
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            background: #fff3cd;
+            color: #7a4f00;
+            border: 1.5px solid #f0c040;
+            font-size: .72rem;
+            font-weight: 700;
+            padding: .1rem .45rem;
+            border-radius: 999px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .ligne-regression {
+            background: #fffbf0;
+        }
+        .ligne-regression:hover {
+            background: #fff3cd !important;
+        }
+
+        /* KPI régression — se colore en orange si > 0 */
+        .kpi--alerte .kpi-val {
+            color: #d96b00;
+        }
+        .kpi--alerte {
+            border-left: 3px solid #d96b00;
+        }
+
+        /* Séparateur visuel avant le KPI régression */
+        .kpi--sep {
+            margin-left: 1rem;
+            padding-left: 1rem;
+        }
+
+        /* Checkbox filtre */
+        .filter-chk {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            cursor: pointer;
+            font-size: .85rem;
+        }
+        .filter-chk input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            accent-color: var(--ft-blue);
+        }
+
+        /* Colonne régression centrée */
+        .col-regression {
+            text-align: center;
+        }

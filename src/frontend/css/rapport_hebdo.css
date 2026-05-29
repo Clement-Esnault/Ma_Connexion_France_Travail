@@ -1,0 +1,332 @@
+/* rapport_hebdo.css — v1.9.5 — Rapport hebdomadaire */
+
+/* ── Toolbar ── */
+.rapport-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0 1rem;
+    flex-wrap: wrap;
+    gap: .75rem;
+}
+
+
+/* ── Sélecteur de période ── */
+.rapport-periode-selector {
+    display: flex;
+    border: 1px solid var(--ft-border);
+    border-radius: var(--ft-radius-sm);
+    overflow: hidden;
+    background: var(--ft-white);
+    box-shadow: var(--ft-shadow-xs);
+}
+
+.rapport-periode-btn {
+    padding: 0 16px;
+    height: 36px;
+    font-size: 13px;
+    font-family: "Marianne", sans-serif;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: var(--ft-muted);
+    cursor: pointer;
+    border-right: 1px solid var(--ft-border);
+    transition: background var(--ft-transition), color var(--ft-transition);
+    white-space: nowrap;
+}
+.rapport-periode-btn:last-child { border-right: none; }
+.rapport-periode-btn:hover      { background: #f0f4ff; color: var(--ft-primary); }
+.rapport-periode-btn.active     { background: var(--ft-primary); color: #fff; }
+
+/* ── En-tête du rapport ── */
+.rapport-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: var(--ft-white);
+    border: 1px solid var(--ft-border-light);
+    border-radius: var(--ft-radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.75rem;
+    box-shadow: var(--ft-shadow-sm);
+    border-left: 4px solid var(--ft-blue);
+}
+
+.rapport-header-logo img { height: 36px; width: auto; flex-shrink: 0; }
+
+.rapport-header-titre { flex: 1; }
+
+.rapport-titre {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ft-blue);
+    letter-spacing: -.01em;
+}
+
+.rapport-sous-titre {
+    font-size: 13px;
+    color: var(--ft-muted);
+    margin-top: 2px;
+}
+
+.rapport-header-meta {
+    font-size: 11.5px;
+    color: var(--ft-muted);
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* ── Sections ── */
+.rapport-section {
+    margin-bottom: 2rem;
+}
+
+.rapport-section-titre {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ft-primary);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--ft-border-light);
+}
+
+.rapport-section-titre--bad  { color: #c0200b; border-bottom-color: #fcd0cc; }
+.rapport-section-titre--good { color: var(--ft-success); border-bottom-color: #c8e8d4; }
+
+/* ── Badges ── */
+.rapport-badge {
+    display: inline-block;
+    background: var(--ft-light);
+    color: var(--ft-blue);
+    border: 1px solid var(--ft-border);
+    border-radius: var(--ft-radius-xl);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    letter-spacing: .03em;
+    text-transform: none;
+}
+
+.rapport-badge--alerte {
+    background: #fdecea;
+    color: var(--ft-red);
+    border-color: #f5c6c6;
+    font-size: 13px;
+    font-weight: 700;
+    min-width: 22px;
+    text-align: center;
+}
+
+/* ── KPI nationaux ── */
+.rapport-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.rapport-kpi {
+    background: var(--ft-white);
+    border: 1px solid var(--ft-border-light);
+    border-radius: var(--ft-radius-lg);
+    padding: 1.1rem 1.25rem;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--ft-shadow-sm);
+}
+
+.rapport-kpi::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+}
+.rapport-kpi.kpi-dl::before    { background: linear-gradient(90deg, var(--ft-blue), var(--ft-blue2)); }
+.rapport-kpi.kpi-ul::before    { background: linear-gradient(90deg, var(--ft-blue2), var(--ft-cyan)); }
+.rapport-kpi.kpi-ping::before  { background: linear-gradient(90deg, #c0000c, var(--ft-red)); }
+.rapport-kpi.kpi-tests::before { background: linear-gradient(90deg, #1a7a3c, #28b060); }
+
+.rapport-kpi-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ft-muted);
+    margin-bottom: .4rem;
+}
+
+.rapport-kpi-valeur {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ft-text);
+    line-height: 1;
+    letter-spacing: -.025em;
+    font-variant-numeric: tabular-nums;
+}
+
+.rapport-kpi-unite {
+    font-size: 11px;
+    color: var(--ft-muted);
+    margin-top: .3rem;
+}
+
+.rapport-kpi-verdict {
+    display: inline-block;
+    margin-top: .5rem;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: var(--ft-radius-xl);
+    letter-spacing: .02em;
+}
+.rapport-kpi-verdict.confort     { background: #e8f8f0; color: #1a6b35; }
+.rapport-kpi-verdict.fonctionnel { background: #fff8e8; color: #7a5000; }
+.rapport-kpi-verdict.insuffisant { background: #fdecea; color: #c0200b; }
+
+.rapport-kpi-skeleton {
+    height: 110px;
+    background: linear-gradient(90deg, var(--ft-border-light) 25%, #eee 50%, var(--ft-border-light) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-pulse 1.4s infinite;
+    border-radius: var(--ft-radius-lg);
+}
+@keyframes skeleton-pulse {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ── Tableaux rapport ── */
+.rapport-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rapport-table th {
+    text-align: left;
+    padding: 9px 12px;
+    background: var(--ft-blue);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.rapport-table th:first-child { border-radius: var(--ft-radius-sm) 0 0 0; }
+.rapport-table th:last-child  { border-radius: 0 var(--ft-radius-sm) 0 0; }
+
+.rapport-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--ft-border-light);
+    font-size: 13px;
+    color: var(--ft-text);
+    vertical-align: middle;
+}
+.rapport-table tr:last-child td { border-bottom: none; }
+.rapport-table tbody tr:hover td { background: #f4f6ff; }
+.rapport-table small { font-size: 10.5px; color: var(--ft-muted); }
+
+/* ── Top dégradés / bons (côte à côte) ── */
+.rapport-topflop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.rapport-col { min-width: 0; }
+
+/* ── Rangs ── */
+.rapport-rang {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+.rapport-rang--bad  { background: #fdecea; color: #c0200b; }
+.rapport-rang--good { background: #e8f8f0; color: #1a6b35; }
+
+/* ── Message "aucun site insuffisant" ── */
+.rapport-ok {
+    background: #e8f8f0;
+    color: #1a6b35;
+    font-weight: 600;
+    padding: 14px !important;
+    text-align: center;
+}
+
+/* ── Pied de rapport ── */
+.rapport-footer {
+    margin-top: 2.5rem;
+    padding: 14px 0;
+    border-top: 1px solid var(--ft-border-light);
+    font-size: 11px;
+    color: var(--ft-muted);
+    text-align: center;
+    letter-spacing: .03em;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+    .rapport-periode-selector { background: #181B2E; border-color: #2A2E50; }
+    .rapport-periode-btn      { color: #7B88BB; border-right-color: #2A2E50; }
+    .rapport-periode-btn:hover { background: #1E2240; color: #7B9CF7; }
+    .rapport-periode-btn.active { background: #283276; color: #DDE0F0; }
+    .rapport-header         { background: #181B2E; border-color: #2A2E50; border-left-color: #7B9CF7; }
+    .rapport-titre          { color: #7B9CF7; }
+    .rapport-section-titre  { color: #7B9CF7; border-bottom-color: #2A2E50; }
+    .rapport-section-titre--bad  { color: #E57373; border-bottom-color: #2A0808; }
+    .rapport-section-titre--good { color: #4CAF82; border-bottom-color: #0D2818; }
+    .rapport-badge          { background: #1C2248; color: #7B9CF7; border-color: #2A2E50; }
+    .rapport-badge--alerte  { background: #2A0808; color: #E57373; border-color: #5A2020; }
+    .rapport-kpi            { background: #181B2E; border-color: #2A2E50; }
+    .rapport-kpi-valeur     { color: #DDE0F0; }
+    .rapport-kpi-label, .rapport-kpi-unite { color: #7B88BB; }
+    .rapport-kpi-verdict.confort     { background: #0D2818; color: #4CAF82; }
+    .rapport-kpi-verdict.fonctionnel { background: #2A2000; color: #E0B030; }
+    .rapport-kpi-verdict.insuffisant { background: #2A0808; color: #E57373; }
+    .rapport-kpi-skeleton   { background: linear-gradient(90deg, #1E2240 25%, #2A2E50 50%, #1E2240 75%); background-size: 200% 100%; }
+    .rapport-table th       { background: #1C2050 !important; color: #BFC6E0 !important; }
+    .rapport-table td       { color: #DDE0F0; border-bottom-color: #2A2E50; }
+    .rapport-table tbody tr:hover td { background: #1E2240; }
+    .rapport-rang--bad      { background: #2A0808; color: #E57373; }
+    .rapport-rang--good     { background: #0D2818; color: #4CAF82; }
+    .rapport-ok             { background: #0D2818; color: #4CAF82; }
+    .rapport-footer         { border-top-color: #2A2E50; color: #5E6B95; }
+}
+
+/* ── Impression / export PDF ── */
+@media print {
+    .bandeau-dsi, .header, .main-nav, .rapport-toolbar, .btn-imprimer { display: none !important; }
+    .page    { padding: 0; max-width: 100%; }
+    body     { background: #fff; color: #000; font-size: 11px; }
+    .rapport-header { box-shadow: none; border: 1px solid #ccc; }
+    .rapport-kpi    { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+    .rapport-topflop { grid-template-columns: 1fr 1fr; }
+    .rapport-section { break-inside: avoid; }
+    .rapport-table th { background: #283276 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cell-bon     { background: #e8f8f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cell-moyen   { background: #fff8e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cell-mauvais { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .rapport-kpi-grid  { grid-template-columns: repeat(2, 1fr); }
+    .rapport-topflop   { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+    .rapport-kpi-grid  { grid-template-columns: 1fr; }
+    .rapport-header    { flex-direction: column; align-items: flex-start; gap: .75rem; }
+}

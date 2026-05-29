@@ -1,0 +1,92 @@
+# ── Sécurité de base ──────────────────────────────────────────────────
+# Désactiver l'index de répertoire (ne pas lister les fichiers)
+Options -Indexes
+
+
+# ── Accès fichiers sensibles ──────────────────────────────────────────
+<FilesMatch "^\.env(\.example)?$">
+    Require all denied
+</FilesMatch>
+
+# ── Contrôle d'accès backend/ ────────────────────────────────────────
+# Seuls les endpoints listés ci-dessous sont accessibles via HTTP.
+# Tout autre fichier backend/ retourne 403.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # ── Endpoints publics (speedtest) ────────────────────────────────
+    RewriteRule ^backend/ip/getIP\.php$                    - [L]
+    RewriteRule ^backend/ip/queue\.php$                    - [L]
+    RewriteRule ^backend/ip/save_result\.php$              - [L]
+    RewriteRule ^backend/ip/save_comment\.php$             - [L]
+    RewriteRule ^backend/ip/garbage\.php$                  - [L]
+    RewriteRule ^backend/ip/empty\.php$                    - [L]
+    RewriteRule ^backend/ip/get_config_speedtest\.php$     - [L]
+    RewriteRule ^backend/ip/upload_measure\.php$          - [L]
+
+    # ── Endpoints authentifiés (techniciens + admins) ────────────────
+    RewriteRule ^backend/ip/site_info\.php$                - [L]
+    RewriteRule ^backend/ip/get_logs\.php$                 - [L]
+    RewriteRule ^backend/ip/delete_log\.php$               - [L]
+    RewriteRule ^backend/ip/get_alertes\.php$              - [L]
+    RewriteRule ^backend/admin/get_seuils\.php$            - [L]
+    RewriteRule ^backend/admin/stat\.php$                  - [L]
+    RewriteRule ^backend/admin/commentaires\.php$          - [L]
+    RewriteRule ^backend/admin/login_unified\.php$         - [L]
+    RewriteRule ^backend/admin/logout\.php$                - [L]
+    RewriteRule ^backend/admin/profil\.php$                - [L]
+    RewriteRule ^backend/admin/difference\.php$            - [L]
+    RewriteRule ^backend/admin/import_logs\.php$            - [L]
+    RewriteRule ^backend/ip/get_heatmap\.php$              - [L]
+
+    # ── Endpoints admin uniquement ───────────────────────────────────
+    RewriteRule ^backend/admin/logs_admin\.php$            - [L]
+    RewriteRule ^backend/admin/get_audit\.php$             - [L]
+    RewriteRule ^backend/admin/get_site\.php$              - [L]
+    RewriteRule ^backend/admin/comptes\.php$               - [L]
+    RewriteRule ^backend/admin/seuils\.php$                - [L]
+    RewriteRule ^backend/admin/modifier_site\.php$         - [L]
+    RewriteRule ^backend/admin/save_config_speedtest\.php$ - [L]
+    RewriteRule ^backend/admin/ajouter_site\.php$          - [L]
+    RewriteRule ^backend/admin/supprimer_site\.php$        - [L]
+    RewriteRule ^backend/admin/get_departement\.php$              - [L]
+    RewriteRule ^backend/admin/rapport_hebdo\.php$             - [L]
+
+    # ── Bloquer tout le reste de backend/ ────────────────────────────
+    RewriteRule ^backend/ - [F,L]
+
+    # ── Extension .php optionnelle dans les URLs ──────────────────────
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([^\.]+)$ $1.php [L]
+
+</IfModule>
+
+# ── En-têtes de sécurité HTTP ─────────────────────────────────────────
+<IfModule mod_headers.c>
+    # Empêche le chargement dans une iframe (clickjacking)
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Empêche le sniffing de type MIME par le navigateur
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Politique de référent : n'envoie pas l'URL de provenance hors du site
+    Header always set Referrer-Policy "same-origin"
+
+    # Force HTTPS si disponible (à activer si TLS configuré sur la VM)
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # CSP : scripts et styles depuis le même domaine + CDNs autorisés
+    Header always set Content-Security-Policy "\
+        default-src 'self'; \
+        script-src 'self' 'unsafe-inline' cdnjs.cloudflare.com unpkg.com; \
+        style-src 'self' 'unsafe-inline' cdnjs.cloudflare.com fonts.googleapis.com; \
+        font-src 'self' fonts.gstatic.com; \
+        img-src 'self' data: tile.openstreetmap.org *.tile.openstreetmap.org; \
+        connect-src 'self';"
+</IfModule>
+
+# ── Pages d'erreur personnalisées ─────────────────────────────────────
+ErrorDocument 403 /erreur.php?code=403
+ErrorDocument 404 /erreur.php?code=404

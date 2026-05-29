@@ -1,0 +1,271 @@
+/* ── Table des logs ─────────────────────────────────────────────────── */
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0;
+    font-size: 13px;
+}
+
+/* En-tête */
+.logs-table thead tr {
+    background: #283276;
+}
+
+.logs-table th {
+    text-align: left;
+    padding: 11px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: none;
+}
+
+.logs-table th:first-child { border-radius: 6px 0 0 0; }
+.logs-table th:last-child  { border-radius: 0 6px 0 0; }
+
+/* Lignes */
+.logs-table tbody tr {
+    transition: background 0.1s;
+}
+
+.logs-table tbody tr:nth-child(even) td:not(.cell-bon):not(.cell-moyen):not(.cell-mauvais) {
+    background: #f7f8fc;
+}
+
+.logs-table tbody tr:hover td:not(.cell-bon):not(.cell-moyen):not(.cell-mauvais) {
+    background: #eef2fb;
+}
+
+.logs-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e8eaf0;
+    color: #222;
+    vertical-align: middle;
+}
+
+/* Colonne ID — grisée et plus petite */
+.logs-table td.muted,
+.logs-table .muted {
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* IP monospace */
+.logs-table .mono {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #444;
+}
+
+/* Badge code GX */
+.code-badge {
+    display: inline-block;
+    background: #eef2fb;
+    color: #283276;
+    border: 1px solid #c5d0ee;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+    white-space: nowrap;
+}
+
+/* Cellules colorées verdicts */
+
+/* Bouton supprimer inline */
+.btn-delete {
+    background: #ffe0e0;
+    color: #c0392b;
+    border: 1px solid #f5c6c6;
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.btn-delete:hover {
+    background: #ffc8c8;
+}
+.btn-delete.btn-sm {
+    padding: 2px 8px;
+    font-size: 11px;
+}
+
+/* Scroll horizontal du tableau */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 6px;
+    border: 1px solid #e0e4f0;
+}
+
+/* Stats grid (moyennes en haut) */
+
+/* Message vide */
+/* ── Pagination ─────────────────────────────────────────────────────── */
+
+#pagination,
+#pagination-bottom,
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 4px;
+    flex-wrap: wrap;
+}
+
+#pagination button,
+#pagination-bottom button,
+.pagination a {
+    font-family: "Marianne", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border: 1px solid #d0d7f0;
+    border-radius: 6px;
+    background: #fff;
+    color: #283276;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+}
+
+#pagination button:hover,
+#pagination-bottom button:hover,
+.pagination a:hover {
+    background: #f0f3ff;
+    border-color: #406BDE;
+}
+
+#pagination span,
+#pagination-bottom span,
+.pagination span {
+    font-size: 13px;
+    color: #888;
+}
+
+/* ── Impression ─────────────────────────────────────────────────────── */
+
+@media print {
+    #btn-pdf,
+    #pagination,
+    #pagination-bottom,
+    .pagination,
+    a[href] { display: none !important; }
+
+    .logs-table { display: table !important; }
+    .table-scroll { overflow: visible; border: none; }
+    .page { padding: 0; }
+
+    /* Propriété standard + préfixe webkit pour compatibilité */
+    
+    
+    
+
+    tr { page-break-inside: avoid; }
+
+    .logs-table thead tr {
+        background: #333 !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+    .logs-table th { color: #fff !important; }
+}
+
+/* ── Responsive mobile ──────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+    .logs-table th,
+    .logs-table td {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+
+    /* Masquer interrégion sur petits écrans */
+    .logs-table th:nth-child(5),
+    .logs-table td:nth-child(5) { display: none; }
+
+    #pagination, .pagination {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .date-filter-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ── Colonnes numériques — pas de retour à la ligne ─────────────────── */
+.logs-table td:nth-child(7),
+.logs-table td:nth-child(8),
+.logs-table td:nth-child(9) {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.logs-table th:nth-child(7),
+.logs-table th:nth-child(8),
+.logs-table th:nth-child(9) {
+    text-align: right;
+}
+
+/* ── Pagination enrichie ─────────────────────────────────────────────── */
+
+/* Masquer les flèches native du input[type=number] */
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+    .logs-table td             { color: #e2e4f0; border-bottom-color: #2e3260; }
+    .logs-table td.muted, .logs-table .muted { color: #6b7a9e; }
+    .logs-table .mono          { color: #a0aac8; }
+    .logs-table thead tr       { background: #1a1c30; }
+    .logs-table tbody tr:nth-child(even) td:not(.cell-bon):not(.cell-moyen):not(.cell-mauvais) { background: #191b2e !important; }
+    .logs-table tbody tr:nth-child(odd)  td:not(.cell-bon):not(.cell-moyen):not(.cell-mauvais) { background: #12131f !important; }
+    .logs-table tbody tr:hover           td:not(.cell-bon):not(.cell-moyen):not(.cell-mauvais) { background: #242640 !important; }
+    .table-scroll { border-color: #2e3260; }
+    .code-badge   { background: #1e2a5a; color: #7b9af7; border-color: #2e3260; }
+    .btn-delete   { background: #2a0808; color: #e57373; border-color: #5a2020; }
+    #pagination button, #pagination-bottom button, .pagination a {
+        background: #1e2030 !important; color: #7b9af7 !important; border-color: #2e3260 !important;
+    }
+    #pagination button:hover, #pagination-bottom button:hover, .pagination a:hover {
+        background: #283276 !important; color: #e2e4f0 !important;
+    }
+    #pagination span, #pagination-bottom span, .pagination span { color: #6b7a9e; }
+}
+
+/* ── Carte danger (suppressions) ── */
+.chart-card--danger {
+    border-left: 4px solid var(--ft-red) !important;
+}
+.chart-card--danger .chart-title { color: var(--ft-red); }
+.danger-subtitle { color: var(--ft-red) !important; font-weight: 600; }
+.compteur-insuffisant { color: var(--ft-red); font-weight: 700; }
+
+/* ── Dark mode additions ── */
+@media (prefers-color-scheme: dark) {
+    .chart-card--danger { border-left-color: #e57373 !important; }
+    .chart-card--danger .chart-title { color: #e57373 !important; }
+    .danger-subtitle    { color: #e57373 !important; }
+    .compteur-insuffisant { color: #e57373 !important; }
+}
+
+/* ── Classes utilitaires (remplacent inline styles) ── */
+.mb-section         { margin-bottom: 1.5rem; }
+.input-nb-jours     { width: 70px; margin: 0 6px; }
+.form-row--mt       { margin-top: 0.75rem; }
+.btn-filter--csv    { background: var(--ft-blue2); text-decoration: none; }
+.btn-filter--csv:hover { background: var(--ft-blue); }
+.pagination-form    { display: inline-flex; align-items: center; gap: 0.4rem; }
+.pagination-label   { font-size: 13px; color: #6b7a99; }
+
+@media (prefers-color-scheme: dark) {
+    .pagination-label { color: #6b7a9e; }
+    .input-nb-jours   { background: #1e2030 !important; color: #e2e4f0 !important; border-color: #2e3260 !important; }
+}

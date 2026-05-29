@@ -1,0 +1,10 @@
+-- Index sur FT_LOGS -- genere le 29/05/2026 15:17:00
+
+USE ft_speedtest;
+
+CREATE INDEX IF NOT EXISTS idx_logs_site      ON FT_LOGS (CODE_GX_SITE);
+CREATE INDEX IF NOT EXISTS idx_logs_date      ON FT_LOGS (DATE_LOGS);
+CREATE INDEX IF NOT EXISTS idx_logs_site_date ON FT_LOGS (CODE_GX_SITE, DATE_LOGS);
+CREATE INDEX IF NOT EXISTS idx_logs_ip_client ON FT_LOGS (IP_CLIENT);
+CREATE INDEX IF NOT EXISTS idx_logs_mode      ON FT_LOGS (MODE);
+CREATE INDEX IF NOT EXISTS idx_logs_session   ON FT_LOGS (SESSION_ID);

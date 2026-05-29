@@ -1,0 +1,239 @@
+/* frontend/css/audit.css — v1.9.2 */
+
+/* ── Layout ──────────────────────────────────────────────────────────── */
+.audit-main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+}
+
+.audit-titre {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ft-blue);
+    margin-bottom: 1.25rem;
+}
+
+/* ── Filtres ─────────────────────────────────────────────────────────── */
+.audit-filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    align-items: flex-end;
+    background: var(--ft-white);
+    border: 1px solid var(--ft-border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.filtre-groupe {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.filtre-groupe label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--ft-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.filtre-groupe select,
+.filtre-groupe input[type="text"] {
+    padding: .42rem .65rem;
+    border: 1px solid var(--ft-border);
+    border-radius: 6px;
+    background: var(--ft-bg);
+    color: var(--ft-text);
+    font-family: "Marianne", sans-serif;
+    font-size: .88rem;
+    min-width: 160px;
+    transition: border-color .15s;
+}
+
+.filtre-groupe select:focus,
+.filtre-groupe input[type="text"]:focus {
+    outline: none;
+    border-color: var(--ft-blue);
+}
+
+/* ── Compteur ────────────────────────────────────────────────────────── */
+.audit-compteur {
+    font-size: .85rem;
+    color: var(--ft-muted);
+    margin-bottom: .5rem;
+}
+
+/* ── Tableau ─────────────────────────────────────────────────────────── */
+.audit-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--ft-border);
+    border-radius: 8px;
+}
+
+.audit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+}
+
+.audit-table thead th {
+    background: var(--ft-blue);
+    color: #fff;
+    padding: .6rem .9rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.audit-table tbody tr:nth-child(even) {
+    background: #f4f6fb;
+}
+
+.audit-table tbody tr:hover {
+    background: #e8ecf8;
+}
+
+.audit-table td {
+    padding: .55rem .9rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--ft-border);
+}
+
+.audit-vide {
+    text-align: center;
+    padding: 2rem !important;
+    color: var(--ft-muted);
+    font-style: italic;
+}
+
+.audit-chargement { color: var(--ft-blue2); }
+.audit-erreur     { color: var(--ft-red); }
+
+/* ── Cellules spécifiques ────────────────────────────────────────────── */
+.audit-date {
+    white-space: nowrap;
+    font-size: .82rem;
+    color: var(--ft-muted);
+}
+
+.audit-site .audit-code {
+    font-family: monospace;
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--ft-blue);
+}
+
+.audit-site .audit-nom {
+    font-size: .82rem;
+    color: var(--ft-muted);
+}
+
+.audit-ip {
+    font-family: monospace;
+    font-size: .82rem;
+    color: var(--ft-muted);
+}
+
+.audit-sans-detail {
+    color: var(--ft-muted);
+    opacity: .5;
+}
+
+/* ── Badges action ───────────────────────────────────────────────────── */
+.badge-action {
+    display: inline-block;
+    padding: .2rem .55rem;
+    border-radius: 12px;
+    font-size: .78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-ajout        { background: #d4f4e2; color: #1a6b3a; }
+.badge-modification { background: #fff0c2; color: #7a5500; }
+.badge-suppression  { background: #fde0e0; color: #9b1c1c; }
+
+.badge-admin-tag {
+    background: var(--ft-blue);
+    color: #fff;
+    padding: .1rem .4rem;
+    border-radius: 8px;
+    font-size: .72rem;
+    font-weight: 600;
+    vertical-align: middle;
+    margin-left: 3px;
+}
+
+/* ── Diff MODIFICATION ───────────────────────────────────────────────── */
+.diff-table {
+    border-collapse: collapse;
+    font-size: .8rem;
+    width: 100%;
+}
+
+.diff-table th {
+    background: #f0f2f8;
+    padding: .25rem .5rem;
+    font-size: .75rem;
+    color: var(--ft-muted);
+    text-align: left;
+}
+
+.diff-table td {
+    padding: .2rem .5rem;
+    border-bottom: 1px solid var(--ft-border);
+}
+
+.diff-champ  { font-family: monospace; font-weight: 600; color: var(--ft-blue); white-space: nowrap; }
+.diff-avant  { color: #9b1c1c; text-decoration: line-through; }
+.diff-apres  { color: #1a6b3a; font-weight: 600; }
+.diff-fleche { color: var(--ft-muted); text-align: center; }
+.val-null    { color: var(--ft-muted); font-style: italic; opacity: .6; }
+
+/* ── Diff AJOUT / SUPPRESSION ────────────────────────────────────────── */
+.diff-liste {
+    margin: 0;
+    padding-left: 1rem;
+    font-size: .8rem;
+    list-style: none;
+}
+
+.diff-liste li {
+    padding: .15rem 0;
+    color: #1a6b3a;
+}
+
+.diff-liste--suppression li {
+    color: #9b1c1c;
+}
+
+/* ── Pagination ──────────────────────────────────────────────────────── */
+/* Utilise .pagination-wrapper / .btn-page de style.css */
+
+/* ── Dark mode ───────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    .audit-table thead th               { background: #1a1c30; }
+    .audit-table tbody tr:nth-child(even) { background: #191b2e; }
+    .audit-table tbody tr:hover         { background: #242640; }
+    .audit-table td                     { border-color: #2e3260; color: #e2e4f0; }
+    .audit-table-wrapper                { border-color: #2e3260; }
+    .audit-filtres                      { background: #1e2030; border-color: #2e3260; }
+    .filtre-groupe select,
+    .filtre-groupe input[type="text"]   { background: #1e2030; border-color: #2e3260; color: #e2e4f0; }
+    .audit-date, .audit-ip,
+    .audit-site .audit-nom              { color: #8892b8; }
+    .audit-site .audit-code             { color: #7b9af7; }
+    .diff-table th                      { background: #1a1c30; color: #8892b8; }
+    .diff-table td                      { border-color: #2e3260; }
+    .diff-champ                         { color: #7b9af7; }
+    .diff-avant                         { color: #e57373; }
+    .diff-apres                         { color: #4caf82; }
+    .badge-ajout                        { background: #0d2818; color: #4caf82; }
+    .badge-modification                 { background: #2a1e00; color: #ffd966; }
+    .badge-suppression                  { background: #2a0808; color: #f87171; }
+    .badge-admin-tag                    { background: #406BDE; }
+}

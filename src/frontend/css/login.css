@@ -1,0 +1,60 @@
+.login-card {
+    max-width: 320px;
+    margin: 60px auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(40,50,118,0.08);
+}
+
+.login-card input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border: 1px solid #d0d7f0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.login-card input:focus {
+    outline: none;
+    border-color: var(--ft-blue);
+}
+
+.login-card .btn {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ft-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 2rem 0 1rem;
+}
+
+.badge-admin {
+    color: #E1000F;
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+.logout-link {
+    color: var(--ft-muted);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.logout-link:hover {
+    text-decoration: underline;
+}
+
+.choix-container {
+    max-width: 400px;
+    margin: 80px auto;
+    text-align: center;
+}

@@ -1,0 +1,124 @@
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.filters-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--ft-primary);
+    font-weight: 500;
+}
+
+.filters-grid input {
+    padding: 7px 10px;
+    border: 1px solid #d0d7f0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.filters-grid input:focus {
+    outline: none;
+    border-color: var(--ft-blue);
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.comm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 900px;
+}
+
+.comm-table th,
+.comm-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eef1f9;
+    vertical-align: top;
+}
+
+.comm-table th {
+    background: #f7f9ff;
+    color: var(--ft-primary);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.comm-table tr:hover td {
+    background: #f7f9ff;
+}
+
+.comm-contenu {
+    max-width: 320px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #333;
+    font-size: 13px;
+}
+
+.code-badge {
+    display: inline-block;
+    background: #eef1f9;
+    color: var(--ft-primary);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.mono  { font-family: monospace; font-size: 12px; }
+.muted { color: var(--ft-muted); font-size: 12px; }
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    font-size: 13px;
+}
+
+.pagination a {
+    color: var(--ft-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pagination a:hover { text-decoration: underline; }
+
+.btn-reset-link {
+    font-size: 13px;
+    color: var(--ft-muted);
+    text-decoration: none;
+}
+
+.btn-reset-link:hover { text-decoration: underline; }
+
+.empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--ft-muted);
+    font-size: 14px;
+}
+/* ── Lien vers le log associé ────────────────────────────────────────── */
+.btn-voir-log {
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+}
+.btn-voir-log:hover {
+    opacity: 1;
+}

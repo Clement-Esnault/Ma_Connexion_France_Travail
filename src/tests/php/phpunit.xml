@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
+         cacheDirectory=".phpunit.cache"
+         beStrictAboutOutputDuringTests="true"
+         failOnRisky="false"
+         failOnWarning="false"
+         bootstrap="Bootstrap.php">
+
+    <testsuites>
+        <testsuite name="Ma Connexion">
+            <directory>.</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory suffix=".php">../../backend/services</directory>
+            <directory suffix=".php">../../backend/ip</directory>
+        </include>
+    </source>
+
+    <logging>
+        <junit outputFile="junit.xml"/>
+    </logging>
+
+    <php>
+        <ini name="display_errors" value="1"/>
+        <ini name="error_reporting" value="-1"/>
+    </php>
+
+</phpunit>
+
+<!--
+    Lancer depuis la RACINE : C:\xampp\htdocs\speedtest
+
+    C:\xampp\php\php.exe C:\SRV\phpunit-11.5.55.phar -c tests\php\phpunit.xml
+
+    Puis ouvrir : http://YOUR_SERVER_IP/speedtest/tests/php/
+-->

@@ -1,0 +1,72 @@
+/* config_speedtest.css — styles spécifiques à la page de configuration du moteur de speedtest */
+
+/* ── En-tête de la carte avec bouton Enregistrer ── */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+/* ── Bloc de chargement initial ── */
+.loading-block {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: var(--ft-muted);
+    font-size: 14px;
+    padding: 2rem 0;
+}
+
+/* ── Section par mode (précis / rapide) ── */
+.mode-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eef1f9;
+}
+.mode-section:last-child { border-bottom: none; }
+
+.mode-badge {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 4px 16px;
+    margin-bottom: .4rem;
+    letter-spacing: .03em;
+}
+.mode-precise { background: #EEF2FF; color: var(--ft-blue); }
+.mode-fast    { background: #FFF3E0; color: #E65100; }
+
+.mode-desc {
+    font-size: 12px;
+    color: var(--ft-muted);
+    margin-bottom: 1.25rem;
+}
+
+/* ── Groupe de paramètres (ping / download / upload) ── */
+.cfg-group {
+    margin-bottom: 1.25rem;
+}
+.cfg-group-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ft-primary);
+    margin-bottom: .5rem;
+}
+
+/* ── Inputs dans le tableau ── */
+.seuils-table input[type=number] {
+    width: 90px;
+}
+.seuils-table td:nth-child(4) {
+    color: var(--ft-muted);
+    font-size: 12px;
+    font-style: italic;
+}
+.alerte { padding: 0.6rem 1rem; border-radius: 4px; margin-bottom: 0.4rem; font-size: 0.9rem; }
+.alerte-erreur { background: #fdecea; color: #c62828; border-left: 4px solid #e53935; }
+.alerte-avertissement { background: #fff8e1; color: #e65100; border-left: 4px solid #ffa726; }

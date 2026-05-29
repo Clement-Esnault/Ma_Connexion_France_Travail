@@ -1,0 +1,440 @@
+/* frontend/css/logs.css — v1.9.2 */
+
+/* ── Tableau des logs ────────────────────────────────────────────────── */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.results-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: var(--ft-blue);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.results-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--ft-border);
+    font-size: 14px;
+    color: var(--ft-text);
+}
+
+.results-table tr:hover td {
+    background: #f4f6ff;
+}
+
+/* ── Bouton supprimer inline ─────────────────────────────────────────── */
+.btn-delete {
+    background: #ffe0e0;
+    color: #c0392b;
+    border: 1px solid #f5c6c6;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background .15s;
+}
+.btn-delete:hover { background: #ffc8c8; }
+
+/* ── Pagination ──────────────────────────────────────────────────────── */
+#pagination,
+#pagination-bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+
+#pagination button,
+#pagination-bottom button {
+    font-family: "Marianne", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border: 1px solid #d0d7f0;
+    border-radius: 6px;
+    background: #fff;
+    color: #283276;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+}
+
+#pagination button:hover,
+#pagination-bottom button:hover {
+    background: #f0f3ff;
+    border-color: #406BDE;
+}
+
+#pagination span,
+#pagination-bottom span {
+    font-size: 13px;
+    color: #888;
+}
+
+/* ── Titre ───────────────────────────────────────────────────────────── */
+.page-title {
+    margin-top: 24px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ft-primary);
+}
+
+/* ── Filtres date ────────────────────────────────────────────────────── */
+.date-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.filter-label {
+    font-size: 13px;
+    color: var(--ft-text);
+}
+
+.filter-date-input {
+    margin-left: 6px;
+    font-size: 13px;
+    padding: 4px 8px;
+    border: 1px solid var(--ft-border);
+    border-radius: 6px;
+    font-family: "Marianne", sans-serif;
+}
+
+.btn-filtrer {
+    font-size: 13px;
+    background: var(--ft-blue);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: "Marianne", sans-serif;
+    font-weight: 500;
+    transition: background 0.15s;
+}
+.btn-filtrer:hover { background: var(--ft-blue2); }
+
+.btn-reinit {
+    font-size: 13px;
+    background: #fff;
+    color: var(--ft-muted);
+    border: 1px solid var(--ft-border);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: "Marianne", sans-serif;
+    transition: color 0.15s, border-color 0.15s;
+}
+.btn-reinit:hover { color: var(--ft-red); border-color: var(--ft-red); }
+
+/* ── Divers ──────────────────────────────────────────────────────────── */
+.total-logs {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.no-results {
+    color: #999;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ── Cartes statistiques ─────────────────────────────────────────────── */
+.stat-card {
+    background: var(--ft-white);
+    border: 1px solid var(--ft-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+}
+
+.stat-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ft-blue2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--ft-text);
+    padding: 2px 0;
+}
+
+.stat-row span:first-child { color: var(--ft-muted); }
+
+.stat-card-nb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.stat-nb {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--ft-blue);
+    line-height: 1;
+    margin: 0.5rem 0 0.25rem;
+}
+
+.stat-nb-label {
+    font-size: 12px;
+    color: var(--ft-muted);
+}
+
+/* ── Export & actions ────────────────────────────────────────────────── */
+.export-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+/* ── Mini graphique évolution ────────────────────────────────────────── */
+.chart-box-logs {
+    margin: 1.5rem 0;
+}
+.chart-box-logs .chart-wrap {
+    height: 260px;
+    position: relative;
+}
+
+/* ── Surbrillance log ciblé depuis commentaires ──────────────────────── */
+@keyframes highlight-fade {
+    0%   { background: #fff3cd; }
+    100% { background: transparent; }
+}
+.log-highlight {
+    animation: highlight-fade 3s ease-out forwards;
+}
+
+/* ── Impression ──────────────────────────────────────────────────────── */
+
+/* Styles du tableau injecté pour l'export PDF */
+.pdf-meta               { margin-bottom: 16px; }
+.pdf-meta-source        { font-size: 11px; color: #888; }
+.pdf-meta-title         { font-size: 18px; font-weight: 700; color: #283276; margin: 4px 0; }
+.pdf-meta-date          { font-size: 11px; color: #888; }
+
+.pdf-table              { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 12px; }
+.pdf-table th           { background: #283276; color: #fff; padding: 6px 8px;
+                          text-align: left; font-weight: 600; }
+.pdf-table td           { padding: 5px 8px; border-bottom: 1px solid #dde; }
+.pdf-table tr:nth-child(even) td { background: #f7f8ff; }
+
+/* En mode impression : masquer tout sauf #pdf-header */
+@media print {
+    /* Mode impression actif (bouton PDF) : tout masquer sauf #pdf-header */
+    body.mode-impression *               { display: none !important; }
+    body.mode-impression #pdf-header,
+    body.mode-impression #pdf-header *   { display: revert !important; }
+    body.mode-impression .pdf-table      { display: table !important; }
+    body.mode-impression .pdf-table *    { display: revert !important; }
+
+    /* Fallback Ctrl+P sans JS : masquer UI inutile */
+    body:not(.mode-impression) #pagination,
+    body:not(.mode-impression) #pagination-bottom,
+    body:not(.mode-impression) .export-bar,
+    body:not(.mode-impression) .date-filter-row,
+    body:not(.mode-impression) #filtre-verdict-row,
+    body:not(.mode-impression) .chart-box-logs,
+    body:not(.mode-impression) #stats-box { display: none !important; }
+
+    tr   { page-break-inside: avoid; }
+    .page { padding: 0; }
+}
+
+/* ── Responsive mobile ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .results-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    .results-table th,
+    .results-table td {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .results-table th:nth-child(2),
+    .results-table td:nth-child(2) { display: none; }
+
+    #pagination { flex-wrap: wrap; gap: 4px; }
+
+    .date-filter-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ── Dark mode ───────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    .results-table th              { background: #1a1c30; color: #8892b8; }
+    .results-table td              { border-bottom-color: #2e3260; color: #e2e4f0; }
+    .results-table tr:hover td     { background: #242640 !important; }
+    .stat-card                     { background: #1e2030; border-color: #2e3260; }
+    .stat-nb                       { color: #7b9af7; }
+    .btn-delete                    { background: #2a0808; color: #e57373; border-color: #5a2020; }
+    .filter-date-input             { background: #1e2030 !important; color: #e2e4f0 !important; border-color: #2e3260 !important; }
+    #pagination button,
+    #pagination-bottom button      { background: #1e2030 !important; color: #7b9af7 !important; border-color: #2e3260 !important; }
+    #pagination button:hover,
+    #pagination-bottom button:hover { background: #283276 !important; color: #e2e4f0 !important; }
+    #pagination span,
+    #pagination-bottom span        { color: #6b7a9e; }
+    .chart-box-logs                { background: #1e2030 !important; border-color: #2e3260 !important; }
+}
+
+/* ── Styles PDF stats (tableau récapitulatif dans export PDF) ────────── */
+.pdf-stats {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-bottom: 14px;
+}
+.pdf-stats th, .pdf-stats td {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
+.pdf-stats thead th {
+    background: #f0f3ff;
+    color: #283276;
+    font-weight: 600;
+    text-align: center;
+}
+.pdf-stats td:first-child {
+    font-weight: 600;
+    color: #555;
+}
+
+/* ── Modal export PDF ────────────────────────────────────────────────── */
+.pdf-modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+.pdf-modal-overlay.visible { display: flex; }
+
+.pdf-modal {
+    background: var(--ft-white, #fff);
+    border-radius: 12px;
+    padding: 28px 32px;
+    width: 380px;
+    max-width: 95vw;
+    box-shadow: 0 8px 32px rgba(0,0,0,.18);
+    font-family: "Marianne", sans-serif;
+}
+.pdf-modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ft-primary, #283276);
+    margin-bottom: 6px;
+}
+.pdf-modal-sub {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 20px;
+}
+.pdf-modal-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.pdf-opt-btn {
+    flex: 1;
+    padding: 14px 10px;
+    border-radius: 8px;
+    border: 2px solid var(--ft-border, #d0d7f0);
+    background: #fff;
+    cursor: pointer;
+    font-family: "Marianne", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ft-text, #1a1c30);
+    transition: border-color .15s, background .15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.pdf-opt-btn .opt-icon { font-size: 22px; }
+.pdf-opt-btn:hover,
+.pdf-opt-btn.selected {
+    border-color: var(--ft-blue, #406BDE);
+    background: #f0f3ff;
+    color: var(--ft-blue, #406BDE);
+}
+.pdf-modal-seuils {
+    font-size: 11px;
+    color: #888;
+    background: #f7f8ff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+.pdf-modal-seuils strong { color: var(--ft-primary, #283276); }
+.pdf-modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.pdf-modal-actions .btn-annuler {
+    background: #fff;
+    color: #888;
+    border: 1px solid var(--ft-border, #d0d7f0);
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-family: "Marianne", sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color .15s;
+}
+.pdf-modal-actions .btn-annuler:hover { color: var(--ft-red, #E1000F); }
+.pdf-modal-actions .btn-lancer {
+    background: var(--ft-blue, #406BDE);
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-family: "Marianne", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+}
+.pdf-modal-actions .btn-lancer:hover { background: #283276; }
+.pdf-modal-actions .btn-lancer:disabled { background: #aaa; cursor: not-allowed; }
+
+@media (prefers-color-scheme: dark) {
+    .pdf-modal            { background: #1e2030; color: #e2e4f0; }
+    .pdf-modal-title      { color: #7b9af7; }
+    .pdf-opt-btn          { background: #252740; border-color: #2e3260; color: #e2e4f0; }
+    .pdf-opt-btn:hover,
+    .pdf-opt-btn.selected { background: #2a3060; border-color: #406BDE; color: #7b9af7; }
+    .pdf-modal-seuils     { background: #252740; color: #8892b8; }
+    .pdf-modal-actions .btn-annuler { background: #1e2030; color: #6b7a9e; border-color: #2e3260; }
+}

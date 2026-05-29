@@ -1,0 +1,97 @@
+/**
+ * import_logs.css — Styles de la page d'import de logs CSV
+ */
+
+.import-box {
+    max-width: 620px;
+    margin: 32px auto;
+    background: var(--ft-white);
+    border: 1px solid var(--ft-border);
+    border-radius: 12px;
+    padding: 28px 32px;
+}
+.import-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ft-primary);
+    margin-bottom: 6px;
+}
+.import-sub {
+    font-size: 13px;
+    color: var(--ft-muted);
+    margin-bottom: 24px;
+}
+.import-format {
+    font-size: 12px;
+    background: #f7f8ff;
+    border: 1px solid var(--ft-border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    line-height: 1.9;
+}
+.import-format code {
+    font-size: 11px;
+    background: #eef0fa;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+.import-drop {
+    border: 2px dashed var(--ft-border);
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    margin-bottom: 16px;
+}
+.import-drop:hover,
+.import-drop.dragover { border-color: var(--ft-blue); background: #f0f3ff; }
+.import-drop-icon     { font-size: 28px; margin-bottom: 8px; }
+.import-drop-label    { font-size: 14px; color: var(--ft-muted); }
+.import-drop-file     { font-size: 13px; font-weight: 600; color: var(--ft-blue); margin-top: 6px; }
+#import-file-input    { display: none; }
+
+.import-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--ft-blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: "Marianne", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+}
+.import-btn:hover    { background: var(--ft-primary); }
+.import-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+.import-result {
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    display: none;
+}
+.import-result.ok      { background: #d4edda; border: 1px solid #b8ddc8; color: #1a5c30; }
+.import-result.erreur  { background: #f8d7da; border: 1px solid #f1b8bc; color: #7a1c24; }
+.import-result-titre   { font-weight: 700; margin-bottom: 6px; }
+.import-result-stats   { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.import-stat           { text-align: center; }
+.import-stat-val       { font-size: 22px; font-weight: 700; }
+.import-stat-lbl       { font-size: 11px; color: #555; }
+.import-erreurs        { font-size: 11px; margin-top: 8px; }
+.import-erreurs li     { margin-bottom: 3px; }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .import-box    { background: var(--ft-card-bg); border-color: var(--ft-border); }
+    .import-format { background: var(--ft-light);   border-color: var(--ft-border); }
+    .import-format code { background: var(--ft-bg); color: var(--ft-text); }
+    .import-drop   { border-color: var(--ft-border); }
+    .import-drop:hover,
+    .import-drop.dragover { background: var(--ft-light); }
+    .import-stat-lbl { color: var(--ft-muted); }
+}
