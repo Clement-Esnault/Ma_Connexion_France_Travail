@@ -158,10 +158,7 @@ Le fichier `.htaccess` gère le rewriting et la sécurité. S'assurer que `mod_r
 **5. Accès**
 
 Ouvrir `http://localhost/ma-connexion/` dans Chrome.
-Identifiants par défaut (à changer immédiatement) :
-- Admin : `admin` / `admin`
-- Tech : `tech` / `tech`
-
+- Identifiants configurés lors de l'installation (à changer immédiatement après le premier accès)
 ---
 
 ## Macro VBA
